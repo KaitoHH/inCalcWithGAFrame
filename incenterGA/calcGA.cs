@@ -10,7 +10,7 @@ namespace incenterGA
 {
     class calcGA : GAFrame
     {
-
+        Random ran = new Random();
         Stack<Point> pointStk;
         Stack<Point> undoStk;
         Graphics g;
@@ -99,7 +99,6 @@ namespace incenterGA
         {
             int x, y;
             DNA2para(DNA, out x, out y);
-            _improvCnt = 0;
             searchPt(x, y);
             //System.Windows.Forms.MessageBox.Show(x.ToString() + " " + y.ToString());
             double deg = 0;
@@ -132,7 +131,6 @@ namespace incenterGA
                 swap(DNA1_[i], DNA2_[i]);
                 swap(DNA1_[i + len / 2], DNA2_[i + len / 2]);
             }
-
         }
 
         private void swap(byte a, byte b)
@@ -252,12 +250,20 @@ namespace incenterGA
         {
             int rr = (int)r;
             g.FillEllipse(new SolidBrush(Color.Red), new Rectangle(x - 4, y - 4, 6, 6));
-            g.DrawEllipse(new Pen(Color.Blue), new Rectangle(x - rr, y - rr, rr * 2, rr * 2));
+            g.DrawEllipse(new Pen(Color.FromArgb((int)(0xff / 5 * Math.Log(_improvCnt + 1)), 0, 0, 0xff)), new Rectangle(x - rr, y - rr, rr * 2, rr * 2));
         }
 
         private void searchPt(int x, int y)
         {
-            g.DrawEllipse(new Pen(Color.FromArgb(100, 0x3f, 0x3f, 0x3f)), new Rectangle(x - 1, y - 1, 2, 2));
+            g.DrawEllipse(new Pen(ranColor()), new Rectangle(x - 1, y - 1, 2, 2));
+        }
+
+        private Color ranColor()
+        {
+            int r = ran.Next(0x100);
+            int g = ran.Next(0x100);
+            int b = ran.Next(0x100);
+            return Color.FromArgb(150, r, g, b);
         }
     }
 }

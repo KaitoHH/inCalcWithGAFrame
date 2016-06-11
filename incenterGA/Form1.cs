@@ -18,7 +18,13 @@ namespace incenterGA
         Point firstPt;
         Thread calc;
         int iterCnt;
+        int showCnt = 0;
         bool threadStart;
+        bool candraw = true;
+        private static Color[] colorList = new Color[]
+        {
+            Color.Tomato,Color.SpringGreen,Color.DarkViolet
+        };
         public Form1()
         {
             InitializeComponent();
@@ -29,12 +35,17 @@ namespace incenterGA
 
         private void addPoint(object sender, EventArgs e)
         {
+            if (!candraw)
+            {
+                return;
+            }
             MouseEventArgs mouse = (MouseEventArgs)e;
             Point mpt = mouse.Location;
             var g = board.CreateGraphics();
             if (GA.pointSize() > 2 && manDist(firstPt, mpt) <= 10)
             {
-                MessageBox.Show("画图结束\n点击开始计算以开始GA");
+                MessageBox.Show("画图结束\n点击开始计算以开始迭代");
+                candraw = false;
                 mpt = firstPt;
             }
             else
@@ -82,6 +93,8 @@ namespace incenterGA
             board.CreateGraphics().Clear(Color.White);
             GA = new calcGA(board.CreateGraphics());
             iterCnt = 0;
+            showCnt = 0;
+            candraw = true;
             updStat();
         }
 
@@ -121,7 +134,15 @@ namespace incenterGA
 
         private void showPt(object sender, EventArgs e)
         {
+            var g = board.CreateGraphics();
+            g.DrawEllipse(new Pen(colorList[showCnt++ % colorList.Length], 5),
+                new Rectangle((int)(GA.bestX - GA.best), (int)(GA.bestY - GA.best), (int)(GA.best * 2), (int)(GA.best * 2)));
+        }
 
+        private void about(object sender, EventArgs e)
+        {
+            about form = new about();
+            form.ShowDialog();
         }
     }
 }

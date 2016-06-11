@@ -44,6 +44,7 @@
             this.ptBest = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.improveCnt = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -69,7 +70,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.开始ToolStripMenuItem,
             this.停止计算ToolStripMenuItem,
-            this.计算ToolStripMenuItem});
+            this.计算ToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(902, 25);
@@ -179,6 +181,13 @@
             this.improveCnt.Size = new System.Drawing.Size(15, 17);
             this.improveCnt.Text = "0";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(53, 21);
+            this.toolStripMenuItem1.Text = "关于...";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.about);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -218,6 +227,7 @@
         private System.Windows.Forms.ToolStripStatusLabel ptBest;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel improveCnt;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
