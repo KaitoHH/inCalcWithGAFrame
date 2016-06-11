@@ -40,6 +40,10 @@
             this.iteration = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bestfit = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ptBest = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.improveCnt = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.board)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -101,7 +105,11 @@
             this.toolStripStatusLabel3,
             this.iteration,
             this.toolStripStatusLabel1,
-            this.bestfit});
+            this.bestfit,
+            this.toolStripStatusLabel4,
+            this.ptBest,
+            this.toolStripStatusLabel5,
+            this.improveCnt});
             this.statusStrip1.Location = new System.Drawing.Point(0, 490);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(902, 22);
@@ -144,6 +152,33 @@
             this.bestfit.Size = new System.Drawing.Size(15, 17);
             this.bestfit.Text = "0";
             // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(68, 17);
+            this.toolStripStatusLabel4.Text = "最佳值坐标";
+            // 
+            // ptBest
+            // 
+            this.ptBest.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Underline);
+            this.ptBest.IsLink = true;
+            this.ptBest.Name = "ptBest";
+            this.ptBest.Size = new System.Drawing.Size(55, 17);
+            this.ptBest.Text = "X: 0 Y: 0";
+            this.ptBest.Click += new System.EventHandler(this.showPt);
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(56, 17);
+            this.toolStripStatusLabel5.Text = "最优计数";
+            // 
+            // improveCnt
+            // 
+            this.improveCnt.Name = "improveCnt";
+            this.improveCnt.Size = new System.Drawing.Size(15, 17);
+            this.improveCnt.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -154,7 +189,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "inCalc";
             ((System.ComponentModel.ISupportInitialize)(this.board)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -179,6 +214,10 @@
         private System.Windows.Forms.ToolStripStatusLabel bestfit;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel iteration;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel ptBest;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        private System.Windows.Forms.ToolStripStatusLabel improveCnt;
     }
 }
 

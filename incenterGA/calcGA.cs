@@ -22,6 +22,14 @@ namespace incenterGA
                 return bestfit;
             }
         }
+
+        private int _improvCnt = 0;
+        public int improvCnt { get { return _improvCnt; } }
+        private int _bestX = 0;
+        public int bestX { get { return _bestX; } }
+        private int _bestY = 0;
+        public int bestY { get { return _bestY; } }
+
         protected override int m { get; set; }
 
         protected override int len { get; set; }
@@ -35,7 +43,7 @@ namespace incenterGA
             m = 4;
             len = 24;
             pc = 50;
-            pm = 0.05;
+            pm = 0.1;
             DNA = new byte[m][];
             DNA[0] = para2DNA(10, 10);
             DNA[1] = para2DNA(10, 100);
@@ -83,12 +91,15 @@ namespace incenterGA
             pointStk.Clear();
             undoStk.Clear();
             bestfit = 0;
+            _bestX = _bestY = 0;
+            _improvCnt = 0;
         }
 
         public override double fitness(byte[] DNA)
         {
             int x, y;
             DNA2para(DNA, out x, out y);
+            _improvCnt = 0;
             searchPt(x, y);
             //System.Windows.Forms.MessageBox.Show(x.ToString() + " " + y.ToString());
             double deg = 0;
@@ -105,6 +116,9 @@ namespace incenterGA
             {
                 drawCircle(x, y, fit);
                 bestfit = fit;
+                _bestX = x;
+                _bestY = y;
+                _improvCnt++;
             }
             return fit;
         }
@@ -113,7 +127,7 @@ namespace incenterGA
         {
             DNA1_ = DNA1;
             DNA2_ = DNA2;
-            for (int i = 10; i < len / 2; i++)
+            for (int i = len / 4; i < len / 2; i++)
             {
                 swap(DNA1_[i], DNA2_[i]);
                 swap(DNA1_[i + len / 2], DNA2_[i + len / 2]);
@@ -243,7 +257,7 @@ namespace incenterGA
 
         private void searchPt(int x, int y)
         {
-            g.DrawEllipse(new Pen(Color.Gray), new Rectangle(x - 1, y - 1, 2, 2));
+            g.DrawEllipse(new Pen(Color.FromArgb(100, 0x3f, 0x3f, 0x3f)), new Rectangle(x - 1, y - 1, 2, 2));
         }
     }
 }

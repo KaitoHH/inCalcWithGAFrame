@@ -34,7 +34,7 @@ namespace incenterGA
             var g = board.CreateGraphics();
             if (GA.pointSize() > 2 && manDist(firstPt, mpt) <= 10)
             {
-                MessageBox.Show("画图结束");
+                MessageBox.Show("画图结束\n点击开始计算以开始GA");
                 mpt = firstPt;
             }
             else
@@ -60,6 +60,8 @@ namespace incenterGA
             labelCnt.Text = GA.pointSize().ToString();
             bestfit.Text = GA.best.ToString();
             iteration.Text = iterCnt.ToString();
+            ptBest.Text = "X: " + GA.bestX + " Y: " + GA.bestY;
+            improveCnt.Text = GA.improvCnt.ToString();
         }
 
         private void undo(object sender, EventArgs e)
@@ -115,6 +117,11 @@ namespace incenterGA
         private void board_Resize(object sender, EventArgs e)
         {
             clear(sender, e);
+        }
+
+        private void showPt(object sender, EventArgs e)
+        {
+
         }
     }
 }
